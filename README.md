@@ -1,6 +1,9 @@
-# learn-cicd-starter (Notely)
+# learn-cicd (Notely)
 
 This repo contains the starter code for the "Notely" application for the "Learn CICD" course on [Boot.dev](https://boot.dev).
+
+## CI Status
+![CI status](https://github.com/venzy/learn-cicd/actions/workflows/ci.yml/badge.svg)
 
 ## Local Development
 
