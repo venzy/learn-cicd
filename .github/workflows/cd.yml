@@ -14,17 +14,6 @@ jobs:
       id-token: write
 
     steps:
-      - id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: Setup gcloud
-        uses: google-github-actions/setup-gcloud@v2
-
-      - name: Use gcloud CLI
-        run: gcloud info
-    
       - name: Check out code
         uses: actions/checkout@v4
 
@@ -36,5 +25,16 @@ jobs:
       - name: Build
         run: scripts/buildprod.sh
 
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Use gcloud CLI
+        run: gcloud info
+    
       - name: Deploy to GCP
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-bootdev-venzy/notely-ar-repo/notely:latest .
